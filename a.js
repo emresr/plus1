@@ -1,3 +1,14 @@
+const minu = 2
+const p = 0
+const y = minu
+if (p === minu) {
+	minu += 1
+}
+
+const x = 10
+x += 5
+console.log(x)
+
 const readline = require("readline")
 const colors = require("colors")
 
@@ -11,7 +22,7 @@ function random(c) {
 	const x = c.toString()
 	const y = x.split("")
 	if (y[0] === y[1] || y[2] === y[1] || y[2] === y[0]) {
-		console.log("2 rakam beraber geldi :( CTRL+C yap pls")
+		var c = Math.floor(Math.random() * (999 - 100 + 1) + 100)
 	}
 	return c
 }
@@ -23,29 +34,25 @@ console.log(m)
 function app() {
 	rl.question("Tahmin et ~~>   ", (a) => {
 		const j = a.split("")
-		var puli = 0
 		var minu = 0
+		var puli = 0
 		function plus() {
 			if (j[0] === y[0] && j[1] === y[1]) {
-				puli++
-				puli++
+				var puli = 2
 				app()
 			} else if (j[0] === y[0] && j[2] === y[2]) {
-				puli++
-				puli++
+				var puli = 2
 				app()
 			} else if (j[2] === y[2] && j[1] === y[1]) {
-				puli++
-				puli++
+				var puli = 2
 				app()
 			} else if (j[0] === y[0] || j[1] === y[1] || j[2] === y[2]) {
 				puli++
-
 				app()
 			} else {
+				var puli = 0
 				app()
 			}
-			console.log()
 		}
 		function minus() {
 			if (
@@ -77,6 +84,7 @@ function app() {
 
 				app()
 			} else {
+				console.log("0")
 				app()
 			}
 		}
@@ -87,17 +95,7 @@ function app() {
 		} else {
 			plus()
 			minus()
-			if (puli === 0 && minu === 0) {
-				console.log(puli)
-			} else if (puli === 0) {
-				console.log(minu)
-			} else if (minu === 0) {
-				console.log(puli)
-			} else {
-				const yyy = puli.toString() + " " + minu.toString()
-
-				console.log(yyy)
-			}
+			console.log(puli + minu)
 		}
 	})
 }
