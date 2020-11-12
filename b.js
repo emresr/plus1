@@ -18,10 +18,12 @@ function random(c) {
 const m = random()
 const x = m.toString()
 const y = x.split("")
-console.log(m)
 
 function app() {
 	rl.question("Tahmin et ~~>   ", (a) => {
+		if (a === "pes") {
+			console.log(m)
+		}
 		const j = a.split("")
 		var puli = 0
 		var minu = 0
@@ -74,6 +76,16 @@ function app() {
 				if (j[2] === y[0]) {
 					minu--
 				}
+				//minus plus
+				if (j[0] === y[0]) {
+					minu++
+				}
+				if (j[1] === y[1]) {
+					minu++
+				}
+				if (j[2] === y[2]) {
+					minu++
+				}
 
 				app()
 			} else {
@@ -88,13 +100,13 @@ function app() {
 			plus()
 			minus()
 			if (puli === 0 && minu === 0) {
-				console.log(puli)
+				console.log(a + "  " + puli)
 			} else if (puli === 0) {
-				console.log(minu)
+				console.log(a + "  " + minu)
 			} else if (minu === 0) {
-				console.log(puli)
+				console.log(a + "  " + puli)
 			} else {
-				const yyy = puli.toString() + " " + minu.toString()
+				const yyy = a + "  " + puli.toString() + " " + minu.toString()
 
 				console.log(yyy)
 			}

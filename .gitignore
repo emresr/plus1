@@ -1,6 +1,7 @@
 # dependencies
 client/node_modules
 node_modules
+/plu1_legacy/node_modules
 /.pnp
 .pnp.js
 
@@ -23,3 +24,4 @@ yarn-error.log*
 
 api/dbconn.js
 bc.js
+
