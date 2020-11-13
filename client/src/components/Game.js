@@ -13,9 +13,9 @@ const Game = () => {
 	const m = random()
 	const x = m.toString()
 	const y = x.split("")
-
+	console.log(m)
 	function game() {
-		const a = "lmao"
+		const a = "123"
 
 		const j = a.split("")
 		var plu = 0
@@ -109,12 +109,13 @@ const Game = () => {
 		<>
 			<div className="leftcolumn">
 				<p> Enter user name </p>
+				<form>
+					<input className="number-input" />
+					<input className="number-input" />
+					<input className="number-input" />
 
-				<input className="number-input" />
-				<input className="number-input" />
-				<input className="number-input" />
-
-				<table></table>
+					<table></table>
+				</form>
 			</div>
 		</>
 	)
