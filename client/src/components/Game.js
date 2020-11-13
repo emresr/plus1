@@ -104,16 +104,15 @@ const Game = () => {
 			}
 		}
 	}
-	game()
 
 	return (
 		<>
 			<div className="leftcolumn">
 				<p> Enter user name </p>
 
-				<input className="number-input"> </input>
-				<input className="number-input"> </input>
-				<input className="number-input"> </input>
+				<input className="number-input" />
+				<input className="number-input" />
+				<input className="number-input" />
 
 				<table></table>
 			</div>

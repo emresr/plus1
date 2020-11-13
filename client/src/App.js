@@ -10,7 +10,8 @@ function App() {
 		<Fragment>
 			<div className="container">
 				<Header />
-				<Footer />
+				<Game />
+				<History />
 			</div>
 		</Fragment>
 	)
