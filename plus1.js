@@ -20,10 +20,7 @@ const x = m.toString()
 const y = x.split("")
 
 function game() {
-	rl.question("Tahmin et ~~>   ", (a) => {
-		if (a === "pes") {
-			console.log(m)
-		}
+const a = "lmao"
 		const j = a.split("")
 		var plu = 0
 		var minu = 0
@@ -95,7 +92,7 @@ function game() {
 		if (a === x) {
 			console.log("+3")
 			console.log("U won!".red.bold)
-			rl.close()
+	
 		} else {
 			plus()
 			minus()
