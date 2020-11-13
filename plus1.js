@@ -25,23 +25,23 @@ function app() {
 			console.log(m)
 		}
 		const j = a.split("")
-		var puli = 0
+		var plu = 0
 		var minu = 0
 		function plus() {
 			if (j[0] === y[0] && j[1] === y[1]) {
-				puli++
-				puli++
+				plu++
+				plu++
 				app()
 			} else if (j[0] === y[0] && j[2] === y[2]) {
-				puli++
-				puli++
+				plu++
+				plu++
 				app()
 			} else if (j[2] === y[2] && j[1] === y[1]) {
-				puli++
-				puli++
+				plu++
+				plu++
 				app()
 			} else if (j[0] === y[0] || j[1] === y[1] || j[2] === y[2]) {
-				puli++
+				plu++
 
 				app()
 			} else {
@@ -99,14 +99,14 @@ function app() {
 		} else {
 			plus()
 			minus()
-			if (puli === 0 && minu === 0) {
-				console.log(a + "  " + puli)
-			} else if (puli === 0) {
+			if (plu === 0 && minu === 0) {
+				console.log(a + "  " + plu)
+			} else if (plu === 0) {
 				console.log(a + "  " + minu)
 			} else if (minu === 0) {
-				console.log(a + "  " + puli)
+				console.log(a + "  " + plu)
 			} else {
-				const yyy = a + "  " + puli.toString() + " " + minu.toString()
+				const yyy = a + "  " + plu.toString() + " " + minu.toString()
 
 				console.log(yyy)
 			}

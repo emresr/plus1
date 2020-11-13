@@ -23,5 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 api/dbconn.js
-bc.js
 
