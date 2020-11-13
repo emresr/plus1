@@ -1,7 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 const Header = () => {
-	return <div></div>;
-};
+	return (
+		<>
+			<div className="header">
+				<a className="header"> Plus1 </a>
 
-export default Header;
+				<a className="header"> New Game </a>
+				<a className="header"> Rules </a>
+				<a className="header"> Leaderboard </a>
+			</div>
+		</>
+	)
+}
+
+export default Header
