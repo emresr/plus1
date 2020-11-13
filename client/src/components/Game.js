@@ -1,6 +1,12 @@
 import React, { useState } from "react"
 
 const Game = () => {
+
+   const [one,setOne] = useState("33")
+      const [two,setTwo] = useState("")
+         const [three,setThree] = useState("")
+console.log({one})
+
 	function random(c) {
 		var c = Math.floor(Math.random() * (999 - 100 + 1) + 100)
 		const x = c.toString()
@@ -110,10 +116,11 @@ const Game = () => {
 			<div className="leftcolumn">
 				<p> Enter user name </p>
 				<form>
-					<input className="number-input" />
-					<input className="number-input" />
-					<input className="number-input" />
+					<input value ={one} className="number-input" />
+					<input value={two} className="number-input" />
+					<input  value= {three} className="number-input" />
 
+                    <button> MF </button>
 					<table></table>
 				</form>
 			</div>
