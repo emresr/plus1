@@ -19,7 +19,7 @@ const m = random()
 const x = m.toString()
 const y = x.split("")
 
-function app() {
+function game() {
 	rl.question("Tahmin et ~~>   ", (a) => {
 		if (a === "pes") {
 			console.log(m)
@@ -31,21 +31,21 @@ function app() {
 			if (j[0] === y[0] && j[1] === y[1]) {
 				plu++
 				plu++
-				app()
+				game()
 			} else if (j[0] === y[0] && j[2] === y[2]) {
 				plu++
 				plu++
-				app()
+				game()
 			} else if (j[2] === y[2] && j[1] === y[1]) {
 				plu++
 				plu++
-				app()
+				game()
 			} else if (j[0] === y[0] || j[1] === y[1] || j[2] === y[2]) {
 				plu++
 
-				app()
+				game()
 			} else {
-				app()
+				game()
 			}
 			console.log()
 		}
@@ -87,9 +87,9 @@ function app() {
 					minu++
 				}
 
-				app()
+				game()
 			} else {
-				app()
+				game()
 			}
 		}
 		if (a === x) {
@@ -113,4 +113,4 @@ function app() {
 		}
 	})
 }
-app()
+game()
