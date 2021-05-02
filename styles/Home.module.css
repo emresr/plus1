@@ -1,0 +1,64 @@
+.main {
+   padding: 0px;
+}
+
+.header {
+   margin: 0px;
+   background: rgb(16, 235, 213);
+   text-align: center;
+   font-size: 25px;
+   width: 100%;
+   color: black;
+   padding: 25px;
+}
+.header_title {
+   margin: 0px;
+}
+.header_content {
+   width: 40%;
+   display: 50rem;
+   margin: auto;
+}
+.container {
+   display: flex;
+}
+.left {
+   width: 70%;
+}
+.numbers {
+   align-content: center;
+   width: fit-content;
+   gap: 2px;
+   padding: 3px;
+   background: transparent;
+   display: grid;
+   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.input_numbers {
+   margin-right: 5px;
+   margin-left: 5px;
+   font-size: 120px;
+   color: red;
+   border-bottom: black solid 5px;
+}
+
+/* Button */
+.button {
+   padding: 15px;
+   background: linear-gradient(
+      to top right,
+      rgb(43, 43, 43),
+      rgb(0, 0, 0),
+      rgb(43, 43, 43)
+   );
+   color: white;
+   font-size: 45px;
+   border-radius: 10%;
+   transition-property: all;
+   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+   transition-duration: 1500ms;
+}
+
+.button:hover {
+   background: linear-gradient(to top right, rgb(0, 0, 0), rgb(58, 58, 58));
+}
