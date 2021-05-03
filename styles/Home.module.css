@@ -1,24 +1,3 @@
-.main {
-   padding: 0px;
-}
-
-.header {
-   margin: 0px;
-   background: rgb(16, 235, 213);
-   text-align: center;
-   font-size: 25px;
-   width: 100%;
-   color: black;
-   padding: 25px;
-}
-.header_title {
-   margin: 0px;
-}
-.header_content {
-   width: 40%;
-   display: 50rem;
-   margin: auto;
-}
 .container {
    display: flex;
 }
@@ -35,11 +14,13 @@
    grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 .input_numbers {
-   margin-right: 5px;
-   margin-left: 5px;
+   margin-right: 15px;
+   margin-left: 15px;
    font-size: 120px;
    color: red;
    border-bottom: black solid 5px;
+   width: 100px;
+   text-align: center;
 }
 
 /* Button */
@@ -62,3 +43,19 @@
 .button:hover {
    background: linear-gradient(to top right, rgb(0, 0, 0), rgb(58, 58, 58));
 }
+
+/* History */
+.history_title {
+   text-align: center;
+   background: rgb(111, 19, 19);
+   width: 30rem;
+}
+.history {
+   display: flex;
+   margin-top: 5px;
+   width: 30rem;
+   background: cyan;
+   justify-content: space-around;
+}
+
+/* Error */

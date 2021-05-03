@@ -1,0 +1,22 @@
+.leaderboard {
+   align-content: center;
+   background: chocolate;
+   width: 100%;
+}
+
+/* Rankings */
+.rankings {
+   margin: 1em 0;
+   min-width: 300px; // adjust to your needs
+
+   tr {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+   }
+   th,
+   td {
+      text-align: center;
+      display: table-cell;
+      padding: 0.25em 0.5em;
+   }
+}

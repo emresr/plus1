@@ -1,0 +1,35 @@
+.main {
+   padding: 0px;
+   width: 100%;
+}
+
+.header {
+   margin: 0px;
+   background: rgb(16, 235, 213);
+   text-align: center;
+   font-size: 25px;
+   width: 100%;
+   color: black;
+   padding: 25px;
+}
+.header_title {
+   margin: 0px;
+}
+.header_content {
+   display: flex;
+   width: 40%;
+   display: 50rem;
+   margin: auto;
+}
+.header_button {
+   background: transparent;
+   padding: 3px;
+   margin-right: 5px;
+   margin-left: 5px;
+   border: none;
+   font-size: 20px;
+}
+.sourcecode {
+   display: flex;
+   font-size: 10px;
+}
