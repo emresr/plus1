@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import React, { useState, useEffect, FC } from "react";
 import Link from "next/link";
 import Layout from "../components/layout";
@@ -29,30 +29,27 @@ export default function Home() {
    const [tryCount, setTryCount] = useState<number>(0);
    console.log("try", tryCount);
    const numbers: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
    // Random number
    function Random() {
       var c = Math.floor(Math.random() * (999 - 100 + 1) + 100);
       const x = c.toString();
       const y = x.split("");
       if (y[0] === y[1] || y[2] === y[1] || y[2] === y[0]) {
-         console.log("2 same number...");
+         return Random();
+      } else {
+         return c;
       }
-      return c;
    }
 
-   const [random, setRandom] = useState<Number>(123);
+   const [random, setRandom] = useState<Number>();
 
    const yeni = () => {
       setRandom(Random());
-      const x = random.toString();
-      const y = x.split("");
-      if (y[0] === y[1] || y[2] === y[1] || y[2] === y[0]) {
-         console.log("2 same number...");
-      }
-      setRandom(Random());
+      console.log(random);
    };
 
-   const x: string = /* "912" */ random.toString();
+   const x: string = random ? random.toString() : "123";
 
    function Game(zero: number, one: number, two: number) {
       const lmao: Array<string> = x.split("");
@@ -66,9 +63,9 @@ export default function Home() {
          return 3;
       } else if (lmao[0] == zero.toString() && lmao[1] == one.toString()) {
          return 2;
-      } else if (lmao[0] == zero.toString() && lmao[2] == one.toString()) {
+      } else if (lmao[0] == zero.toString() && lmao[2] == two.toString()) {
          return 2;
-      } else if (lmao[1] == zero.toString() && lmao[2] == one.toString()) {
+      } else if (lmao[1] == one.toString() && lmao[2] == two.toString()) {
          return 2;
       } else if (lmao[0] == zero.toString()) {
          return 1;
@@ -164,7 +161,8 @@ export default function Home() {
    function someClick(a: number) {
       if (!input) {
          setInput({ zero: a, one: null, two: null });
-      } else if (!input.one) {
+      } else if (input.one == null) {
+         console.log(a);
          if (a == input.zero) {
          } else {
             setInput({ zero: input.zero, one: a, two: null });
@@ -235,7 +233,6 @@ export default function Home() {
                      }}
                   >
                      {error && <h1>{error}</h1>}
-                     {tryCount == -1 && <h1>You tried {tryCount} times.</h1>}
                      <div>
                         <div style={{ display: "flex" }}>
                            <h1 className={styles.input_numbers}>
@@ -282,42 +279,46 @@ export default function Home() {
                      <button onClick={sendScore}>Send</button>
                      <button onClick={yeni}>Yeni</button>
                   </div>
+                  {tryCount !== 0 && (
+                     <div className={styles.trycount}>
+                        {" "}
+                        <h1>You tried {tryCount} times.</h1>
+                     </div>
+                  )}
                </div>{" "}
                <div className={styles.history_title}>
                   <h1>History</h1>
-                  <div>
-                     {answers.length > 0 &&
-                        answers.map((answer, index) => (
-                           <div className={styles.history}>
-                              <div>
-                                 <h1>{answer}</h1>
-                              </div>
-                              <div>
-                                 {points[index].minus !== 0 &&
-                                    points[index].plus == 0 && (
-                                       <h1>{points[index].minus}</h1>
-                                    )}
-                                 {points[index].minus == 0 &&
-                                    points[index].plus !== 0 && (
-                                       <h1>+{points[index].plus}</h1>
-                                    )}
-                                 {points[index].minus !== 0 &&
-                                    points[index].plus !== 0 && (
-                                       <div style={{ display: "flex" }}>
-                                          <h1>+{points[index].plus} </h1>
-                                          <h1>{points[index].minus}</h1>
-                                       </div>
-                                    )}
-                                 {points[index].minus == 0 &&
-                                    points[index].plus == 0 && (
-                                       <div style={{ display: "flex" }}>
-                                          <h1>0</h1>{" "}
-                                       </div>
-                                    )}
-                              </div>
+                  {answers.length > 0 &&
+                     answers.reverse().map((answer, index) => (
+                        <div className={styles.history}>
+                           <div>
+                              <h1>{answer}</h1>
                            </div>
-                        ))}
-                  </div>
+                           <div>
+                              {points[index].minus !== 0 &&
+                                 points[index].plus == 0 && (
+                                    <h1>{points[index].minus}</h1>
+                                 )}
+                              {points[index].minus == 0 &&
+                                 points[index].plus !== 0 && (
+                                    <h1>+{points[index].plus}</h1>
+                                 )}
+                              {points[index].minus !== 0 &&
+                                 points[index].plus !== 0 && (
+                                    <div style={{ display: "flex" }}>
+                                       <h1>+{points[index].plus} </h1>
+                                       <h1>{points[index].minus}</h1>
+                                    </div>
+                                 )}
+                              {points[index].minus == 0 &&
+                                 points[index].plus == 0 && (
+                                    <div style={{ display: "flex" }}>
+                                       <h1>0</h1>{" "}
+                                    </div>
+                                 )}
+                           </div>
+                        </div>
+                     ))}
                </div>
             </div>{" "}
          </Layout>

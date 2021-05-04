@@ -1,22 +1,38 @@
 .leaderboard {
-   align-content: center;
-   background: chocolate;
-   width: 100%;
+   width: 50%;
+   margin: 0 auto;
+   text-align: center;
+   margin-top: 20px;
 }
 
 /* Rankings */
+.rankcontainer {
+   display: flex;
+   margin: auto;
+   margin-top: 20px;
+   justify-content: center;
+}
 .rankings {
-   margin: 1em 0;
-   min-width: 300px; // adjust to your needs
-
+   margin: 1em;
+   min-width: 300px;
+   font-size: large;
    tr {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
+   }
+   tr:nth-child(even) {
+      background: var(--color2);
+   }
+   tr:nth-child(odd) {
+      background: var(--color3);
    }
    th,
    td {
       text-align: center;
       display: table-cell;
-      padding: 0.25em 0.5em;
+      padding: 0.4em 0.5em;
+   }
+   th {
+      margin: 1em 1em;
    }
 }

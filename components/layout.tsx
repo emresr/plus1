@@ -1,7 +1,11 @@
 import styles from "../styles/Layout.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Layout = ({ children }: any) => {
+   const router = useRouter();
+   const path: string = useRouter().pathname;
+
    return (
       <main className={styles.main}>
          <div className={styles.header}>
@@ -10,24 +14,51 @@ const Layout = ({ children }: any) => {
                <Link href="/">Plus1</Link>
             </h1>
             <div className={styles.header_content}>
-               <button className={styles.header_button}>
-                  {" "}
-                  <Link href="/rules">Rules</Link>
-               </button>
-               <button className={styles.header_button}>
+               {path == "/leaderboard" && (
+                  <button className={styles.header_button}>
+                     {" "}
+                     <Link href="/">Play Now </Link>
+                  </button>
+               )}
+               {path == "/rules" && (
+                  <button className={styles.header_button}>
+                     {" "}
+                     <Link href="/leaderboard">Play Now </Link>
+                  </button>
+               )}
+               <button
+                  className={styles.header_button}
+                  style={
+                     path == "/leaderboard"
+                        ? { fontWeight: "bold" }
+                        : { fontWeight: "normal" }
+                  }
+               >
                   {" "}
                   <Link href="/leaderboard">Leaderboard</Link>
                </button>
+               <button
+                  className={styles.header_button}
+                  style={
+                     path == "/rules"
+                        ? { fontWeight: "bold" }
+                        : { fontWeight: "normal" }
+                  }
+               >
+                  {" "}
+                  <Link href="/rules">Rules</Link>
+               </button>
+
                <Link href="https://github.com/emresr/plus1">
                   <a className={styles.sourcecode}>
-                     <h1>Source Code</h1>
+                     <h1 className={styles.header_button}>Source Code</h1>
 
                      <div>
                         <svg
                            style={{
-                              marginTop: "auto",
+                              marginTop: "2px",
                               marginBottom: "auto",
-                              marginLeft: "10px",
+                              marginLeft: "-12px",
                            }}
                            height="24"
                            viewBox="0 0 16 16"

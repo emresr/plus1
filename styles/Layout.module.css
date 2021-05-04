@@ -5,7 +5,6 @@
 
 .header {
    margin: 0px;
-   background: rgb(16, 235, 213);
    text-align: center;
    font-size: 25px;
    width: 100%;
@@ -17,19 +16,19 @@
 }
 .header_content {
    display: flex;
-   width: 40%;
-   display: 50rem;
+   width: fit-content;
    margin: auto;
+   margin-top: 20px;
+   justify-content: center;
 }
 .header_button {
    background: transparent;
    padding: 3px;
-   margin-right: 5px;
-   margin-left: 5px;
+   margin-right: 15px;
    border: none;
    font-size: 20px;
+   font-weight: normal;
 }
 .sourcecode {
    display: flex;
-   font-size: 10px;
 }

@@ -13,7 +13,7 @@ p {
  */
 }
 body {
-   background: rgb(0, 75, 67);
+   background: linear-gradient(to top, var(--color2), var(--color1));
 }
 a {
    color: inherit;
@@ -24,8 +24,8 @@ a {
    box-sizing: border-box;
 }
 :root {
-   --color1: #feffde;
-   --color2: #ddffbc;
-   --color3: #91c788;
-   --color4: #52734d;
+   --color1: #fcecdd;
+   --color2: #ffc288;
+   --color3: #fea82f;
+   --color4: #ff6701;
 }

@@ -2,6 +2,7 @@ import Layout from "../components/layout";
 import service from "../utils/service";
 import { useList, useListVals } from "react-firebase-hooks/database";
 import styles from "../styles/Leaderboard.module.scss";
+import Head from "next/head";
 const Leaderboard = () => {
    const [ranking, loading] = useListVals(service.getFirst10());
    console.log(ranking);
@@ -12,30 +13,38 @@ const Leaderboard = () => {
       point: number;
    }
    return (
-      <Layout>
-         <div className={styles.leaderboard}>
+      <div>
+         <Head>
+            <title>Leaderboard | Plus1</title>
+            <link rel="icon" href="/favicon.ico" />
+         </Head>
+         <Layout>
+            {" "}
             <div>
-               <h1>Leaderboard</h1>
-               <div>
-                  <table className={styles.rankings}>
-                     <tr>
-                        <th> Name</th>
-                        <th>Point</th>
-                     </tr>
-
-                     {!loading &&
-                        ranking.length > 0 &&
-                        ranking.map((rank: any) => (
+               <div className={styles.leaderboard}>
+                  <div className={styles.rankcontainer}>
+                     <div>
+                        <table className={styles.rankings}>
                            <tr>
-                              <td>{rank.name}</td>
-                              <td>{rank.point}</td>
+                              <th> Name</th>
+                              <th>Point</th>
                            </tr>
-                        ))}
-                  </table>
+
+                           {!loading &&
+                              ranking.length > 0 &&
+                              ranking.map((rank: any) => (
+                                 <tr>
+                                    <td>{rank.name}</td>
+                                    <td>{rank.point}</td>
+                                 </tr>
+                              ))}
+                        </table>
+                     </div>
+                  </div>
                </div>
             </div>
-         </div>
-      </Layout>
+         </Layout>{" "}
+      </div>
    );
 };
 

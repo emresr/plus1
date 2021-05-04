@@ -17,7 +17,7 @@
    margin-right: 15px;
    margin-left: 15px;
    font-size: 120px;
-   color: red;
+   color: var(--color4);
    border-bottom: black solid 5px;
    width: 100px;
    text-align: center;
@@ -38,6 +38,7 @@
    transition-property: all;
    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
    transition-duration: 1500ms;
+   border: none;
 }
 
 .button:hover {
@@ -47,15 +48,28 @@
 /* History */
 .history_title {
    text-align: center;
-   background: rgb(111, 19, 19);
    width: 30rem;
+   margin-top: 50px;
+   div:nth-child(even) {
+      background: var(--color2);
+   }
+   div:nth-child(odd) {
+      background: var(--color3);
+   }
 }
 .history {
    display: flex;
    margin-top: 5px;
    width: 30rem;
-   background: cyan;
+
    justify-content: space-around;
 }
 
 /* Error */
+
+/* Try Count */
+.trycount {
+   text-align: center;
+   width: 100%;
+   margin-top: 10px;
+}

@@ -1,0 +1,12 @@
+.rules_page {
+   justify-content: center;
+   width: 100%;
+   display: flex;
+   margin-top: 32px;
+}
+.rules {
+   width: 40%;
+}
+.h2 {
+   margin-top: 5px;
+}
