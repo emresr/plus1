@@ -1,4 +1,4 @@
-import styles from "../styles/Layout.module.css";
+import styles from "../styles/Layout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -11,7 +11,7 @@ const Layout = ({ children }: any) => {
          <div className={styles.header}>
             <h1 className={styles.header_title}>
                {" "}
-               <Link href="/">Plus1</Link>
+               <Link href="/">Plus+1</Link>
             </h1>
             <div className={styles.header_content}>
                {path == "/leaderboard" && (
@@ -23,20 +23,9 @@ const Layout = ({ children }: any) => {
                {path == "/rules" && (
                   <button className={styles.header_button}>
                      {" "}
-                     <Link href="/leaderboard">Play Now </Link>
+                     <Link href="/">Play Now </Link>
                   </button>
                )}
-               <button
-                  className={styles.header_button}
-                  style={
-                     path == "/leaderboard"
-                        ? { fontWeight: "bold" }
-                        : { fontWeight: "normal" }
-                  }
-               >
-                  {" "}
-                  <Link href="/leaderboard">Leaderboard</Link>
-               </button>
                <button
                   className={styles.header_button}
                   style={
@@ -48,6 +37,17 @@ const Layout = ({ children }: any) => {
                   {" "}
                   <Link href="/rules">Rules</Link>
                </button>
+               <button
+                  className={styles.header_button}
+                  style={
+                     path == "/leaderboard"
+                        ? { fontWeight: "bold" }
+                        : { fontWeight: "normal" }
+                  }
+               >
+                  {" "}
+                  <Link href="/leaderboard">Leaderboard</Link>
+               </button>
 
                <Link href="https://github.com/emresr/plus1">
                   <a className={styles.sourcecode}>
@@ -56,7 +56,7 @@ const Layout = ({ children }: any) => {
                      <div>
                         <svg
                            style={{
-                              marginTop: "2px",
+                              marginTop: "50%",
                               marginBottom: "auto",
                               marginLeft: "-12px",
                            }}
@@ -76,6 +76,7 @@ const Layout = ({ children }: any) => {
                </Link>
             </div>
          </div>
+
          <div>{children}</div>
       </main>
    );

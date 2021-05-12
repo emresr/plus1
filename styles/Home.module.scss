@@ -1,12 +1,77 @@
 .container {
    display: flex;
+   @media (max-width: 768px) {
+      display: block;
+   }
 }
 .left {
    width: 70%;
+   @media (max-width: 768px) {
+      width: 100%;
+   }
+   display: flex;
+   justify-content: center;
 }
+/* .left_container { 
+
+} */
+.name_input {
+   border: none;
+   border-bottom: solid 2px rgba(0, 0, 0, 0.8);
+   background: transparent;
+   font-size: 20px;
+   margin-left: 25px;
+   padding-left: 5px;
+   color: rgba(0, 0, 0, 0.5);
+   &:focus {
+      outline: none;
+   }
+}
+.next_game {
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 5px;
+}
+.next_text {
+   font-size: 12px;
+}
+
+$height: 36px;
+.toggle {
+   background: green;
+   display: block;
+   width: $height * 2;
+   border: none;
+   border-radius: 100%;
+   height: $height;
+   z-index: 5001;
+}
+.toggle_button {
+   background: #f1f1f1;
+   width: $height;
+   height: $height;
+   border-radius: 100%;
+   z-index: 5000;
+   + .lmao {
+      border: solid 2px black;
+   }
+}
+.lastscore {
+   font-size: 15px;
+}
+.error {
+   text-align: center;
+   width: 100%;
+   margin-top: 0px;
+   margin-bottom: 5px;
+   color: rgba(255, 0, 0, 0.7);
+}
+.error_title {
+   margin: 0;
+}
+
 .numbers {
    align-content: center;
-   width: fit-content;
    gap: 2px;
    padding: 3px;
    background: transparent;
@@ -16,7 +81,7 @@
 .input_numbers {
    margin-right: 15px;
    margin-left: 15px;
-   font-size: 120px;
+   font-size: 75px;
    color: var(--color4);
    border-bottom: black solid 5px;
    width: 100px;
@@ -49,20 +114,51 @@
 .history_title {
    text-align: center;
    width: 30rem;
-   margin-top: 50px;
-   div:nth-child(even) {
-      background: var(--color2);
-   }
-   div:nth-child(odd) {
-      background: var(--color3);
+   margin-top: 10px;
+   @media (max-width: 768px) {
+      width: 100%;
    }
 }
 .history {
    display: flex;
    margin-top: 5px;
    width: 30rem;
-
    justify-content: space-around;
+}
+
+.tablecontainer {
+   height: 250px;
+   overflow: scroll;
+   scroll-behavior: smooth;
+   margin-bottom: 10px;
+}
+.table {
+   min-width: 90%;
+   margin-right: auto;
+   margin-left: auto;
+   font-size: large;
+
+   tr:nth-child(even) {
+      background: var(--color2);
+      overflow: auto;
+   }
+   tr:nth-child(odd) {
+      background: var(--color3);
+      overflow: auto;
+   }
+
+   td {
+      text-align: center;
+      display: table-cell;
+      border: none;
+      padding-top: 2px;
+      padding-bottom: 2px;
+   }
+   h1 {
+      margin: 0px;
+      font-size: 15px;
+   }
+   scroll-padding-bottom: auto;
 }
 
 /* Error */
@@ -71,5 +167,95 @@
 .trycount {
    text-align: center;
    width: 100%;
-   margin-top: 10px;
+   margin-top: 2px;
+}
+
+/* Modal */
+.modal {
+   z-index: 100;
+   position: absolute;
+   background: white;
+   top: 50%;
+   left: 50%;
+   padding: 25px;
+   border-radius: 3%;
+   transform: translate(-50%, -50%);
+}
+.close_button {
+   background: black;
+   position: absolute;
+   width: 15px;
+   height: 15px;
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+   margin: 5px 5px 0 0;
+   top: 0;
+   right: 0;
+   color: white;
+   border: none;
+}
+.new_game_cont {
+   display: flex;
+   justify-content: center;
+}
+.new_game {
+   background-color: var(--color3);
+   padding: 5px;
+   border: none;
+   border-radius: 10%;
+   font-weight: bold;
+   font-size: 20px;
+   transition-property: all;
+   /*    transition-duration: 5s;
+ */
+   &:hover {
+      background: var(--color2);
+   }
+}
+.modalbackground {
+   z-index: 99;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   background: rgba(0, 0, 0, 0.6);
+}
+/* Toggla */
+.toggle_container {
+   margin-top: auto;
+   margin-bottom: auto;
+}
+.switch {
+   input {
+      position: absolute;
+      opacity: 0;
+   }
+   display: inline-block;
+   font-size: 20px; /* 1 */
+   height: 1em;
+   width: 2em;
+   background: #bdb9a6;
+   border-radius: 1em;
+   input:checked {
+      background: red;
+   }
+   div {
+      height: 1em;
+      width: 1em;
+      border-radius: 1em;
+      background: #fff;
+      box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
+      -webkit-transition: all 300ms;
+      -moz-transition: all 300ms;
+      transition: all 300ms;
+   }
+   input:checked {
+      + div {
+         -webkit-transform: translate3d(100%, 0, 0);
+         -moz-transform: translate3d(100%, 0, 0);
+         transform: translate3d(100%, 0, 0);
+      }
+   }
 }

@@ -1,4 +1,5 @@
 Plus1
+Number guessing game built with Typescript.
 
 ## Installation
 

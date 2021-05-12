@@ -9,11 +9,11 @@
 .rankcontainer {
    display: flex;
    margin: auto;
-   margin-top: 20px;
+   margin-top: 10px;
    justify-content: center;
 }
 .rankings {
-   margin: 1em;
+   margin: 0em;
    min-width: 300px;
    font-size: large;
    tr {
@@ -34,5 +34,6 @@
    }
    th {
       margin: 1em 1em;
+      padding: 1em 1em;
    }
 }

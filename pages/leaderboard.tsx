@@ -27,7 +27,7 @@ const Leaderboard = () => {
                         <table className={styles.rankings}>
                            <tr>
                               <th> Name</th>
-                              <th>Point</th>
+                              <th>Score</th>
                            </tr>
 
                            {!loading &&
