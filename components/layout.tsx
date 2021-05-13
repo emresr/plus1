@@ -11,7 +11,7 @@ const Layout = ({ children }: any) => {
          <div className={styles.header}>
             <h1 className={styles.header_title}>
                {" "}
-               <Link href="/">Plus+1</Link>
+               <Link href="/">Plus1</Link>
             </h1>
             <div className={styles.header_content}>
                {path == "/leaderboard" && (

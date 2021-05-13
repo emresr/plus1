@@ -2,6 +2,7 @@
    display: flex;
    @media (max-width: 768px) {
       display: block;
+      margin: 0px 10px 0px 10px;
    }
 }
 .left {
@@ -9,6 +10,7 @@
    @media (max-width: 768px) {
       width: 100%;
    }
+
    display: flex;
    justify-content: center;
 }
@@ -26,38 +28,28 @@
    &:focus {
       outline: none;
    }
+   @media (max-width: 768px) {
+      margin-top: 25px;
+   }
 }
 .next_game {
    display: flex;
    justify-content: space-evenly;
-   margin-top: 5px;
-}
-.next_text {
-   font-size: 12px;
-}
-
-$height: 36px;
-.toggle {
-   background: green;
-   display: block;
-   width: $height * 2;
-   border: none;
-   border-radius: 100%;
-   height: $height;
-   z-index: 5001;
-}
-.toggle_button {
-   background: #f1f1f1;
-   width: $height;
-   height: $height;
-   border-radius: 100%;
-   z-index: 5000;
-   + .lmao {
-      border: solid 2px black;
+   margin-top: 10px;
+   @media (max-width: 768px) {
+      margin-top: 20px;
    }
 }
+.next_text {
+   font-size: 16px;
+}
+
 .lastscore {
    font-size: 15px;
+   @media (max-width: 768px) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+   }
 }
 .error {
    text-align: center;
@@ -81,7 +73,7 @@ $height: 36px;
 .input_numbers {
    margin-right: 15px;
    margin-left: 15px;
-   font-size: 75px;
+   font-size: 90px;
    color: var(--color4);
    border-bottom: black solid 5px;
    width: 100px;
@@ -91,32 +83,35 @@ $height: 36px;
 /* Button */
 .button {
    padding: 15px;
-   background: linear-gradient(
-      to top right,
-      rgb(43, 43, 43),
-      rgb(0, 0, 0),
-      rgb(43, 43, 43)
-   );
-   color: white;
-   font-size: 45px;
+   background: linear-gradient(to top right, var(--color3), var(--color4));
+   color: black;
+   font-size: 20px;
    border-radius: 10%;
-   transition-property: all;
-   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-   transition-duration: 1500ms;
+   transition: all 0.05s;
    border: none;
+   width: 60px;
+   height: 60px;
+   font-weight: bold;
+   &:hover {
+      background: linear-gradient(to top right, var(--color2), var(--color3));
+   }
 }
 
-.button:hover {
-   background: linear-gradient(to top right, rgb(0, 0, 0), rgb(58, 58, 58));
+.game_buttons {
+   display: grid;
+   grid-template-rows: repeat(1, minmax(0, 1fr));
+   gap: 2px;
+   padding: 3px;
+   padding-left: 0px;
 }
-
 /* History */
-.history_title {
+.history_container {
    text-align: center;
    width: 30rem;
    margin-top: 10px;
    @media (max-width: 768px) {
       width: 100%;
+      margin-top: 10px;
    }
 }
 .history {
@@ -136,15 +131,12 @@ $height: 36px;
    min-width: 90%;
    margin-right: auto;
    margin-left: auto;
-   font-size: large;
 
    tr:nth-child(even) {
       background: var(--color2);
-      overflow: auto;
    }
    tr:nth-child(odd) {
       background: var(--color3);
-      overflow: auto;
    }
 
    td {
@@ -156,9 +148,8 @@ $height: 36px;
    }
    h1 {
       margin: 0px;
-      font-size: 15px;
+      font-size: 20px;
    }
-   scroll-padding-bottom: auto;
 }
 
 /* Error */
@@ -168,49 +159,47 @@ $height: 36px;
    text-align: center;
    width: 100%;
    margin-top: 2px;
+   @media (max-width: 768px) {
+      margin-top: 15px;
+   }
 }
 
 /* Modal */
 .modal {
    z-index: 100;
    position: absolute;
-   background: white;
+   background: var(--color4);
    top: 50%;
    left: 50%;
    padding: 25px;
    border-radius: 3%;
    transform: translate(-50%, -50%);
+   h1 {
+      color: var(--color1);
+      font-weight: normal;
+   }
+   @media (max-width: 768px) {
+      width: 90%;
+   }
 }
-.close_button {
-   background: black;
-   position: absolute;
-   width: 15px;
-   height: 15px;
-   text-align: center;
-   align-items: center;
-   justify-content: center;
-   margin: 5px 5px 0 0;
-   top: 0;
-   right: 0;
-   color: white;
-   border: none;
-}
+
 .new_game_cont {
    display: flex;
    justify-content: center;
 }
 .new_game {
-   background-color: var(--color3);
+   background-color: transparent;
    padding: 5px;
-   border: none;
+   border: solid 2px var(--color3);
    border-radius: 10%;
-   font-weight: bold;
+   font-weight: normal;
    font-size: 20px;
-   transition-property: all;
-   /*    transition-duration: 5s;
- */
+   color: var(--color1);
+   transition: all 1s;
+
    &:hover {
-      background: var(--color2);
+      background: var(--color3);
+      cursor: pointer;
    }
 }
 .modalbackground {
@@ -222,40 +211,46 @@ $height: 36px;
    left: 0;
    background: rgba(0, 0, 0, 0.6);
 }
+
 /* Toggla */
 .toggle_container {
    margin-top: auto;
    margin-bottom: auto;
 }
+
 .switch {
-   input {
-      position: absolute;
-      opacity: 0;
-   }
-   display: inline-block;
-   font-size: 20px; /* 1 */
-   height: 1em;
-   width: 2em;
-   background: #bdb9a6;
-   border-radius: 1em;
-   input:checked {
-      background: red;
-   }
-   div {
-      height: 1em;
-      width: 1em;
-      border-radius: 1em;
-      background: #fff;
-      box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
-      -webkit-transition: all 300ms;
-      -moz-transition: all 300ms;
-      transition: all 300ms;
-   }
-   input:checked {
-      + div {
-         -webkit-transform: translate3d(100%, 0, 0);
-         -moz-transform: translate3d(100%, 0, 0);
-         transform: translate3d(100%, 0, 0);
-      }
-   }
+   -webkit-appearance: none;
+   appearance: none;
+   width: 50px;
+   height: 25px;
+   background-color: #f1f1f1;
+   border: none;
+   border-radius: 40px;
+   border: none;
+   outline: none;
+   position: relative;
+   transition: 200ms;
+}
+
+.switch:checked {
+   background-color: rgba(6, 189, 0, 0.733);
+   border: none;
+}
+.switch:before {
+   content: "";
+   width: 25px;
+   height: 25px;
+   background-color: #fff;
+   position: absolute;
+   top: 0;
+   left: 0;
+   box-shadow: red 2px;
+   border-radius: 50%;
+   transition: 200ms;
+   margin-top: 0.45px;
+   box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
+}
+
+.switch:checked:before {
+   left: 26px;
 }

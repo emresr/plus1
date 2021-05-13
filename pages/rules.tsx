@@ -12,18 +12,24 @@ const Rules = () => {
          <Layout>
             <div className={styles.rules_page}>
                <div className={styles.rules}>
-                  <h1>
-                     Goal: Find unique three-digit number by getting +3 point.
-                  </h1>{" "}
-                  <h2 style={{ marginTop: "10px" }}>
-                     Get +1 for each true digit in true place.
-                  </h2>
-                  <h2>Get -1 for each true number but in wrong place.</h2>
+                  <div style={{ margin: "auto" }}>
+                     <h1>
+                        <span>Goal:</span> Find unique three-digit number by
+                        getting <span>+3</span> point.
+                     </h1>{" "}
+                     <h2 style={{ marginTop: "25px" }}>
+                        - Get <span>+1</span> for each right digit in its place.
+                     </h2>
+                     <h2>
+                        - Get <span>-1</span> for each right digit but in the
+                        wrong place.
+                     </h2>
+                  </div>{" "}
                </div>
                <div className={styles.example}>
                   <h1>Example</h1>
                   <h2>
-                     Random number: <span>123</span>
+                     Random number: <span className={styles.random}>123</span>
                   </h2>
                   <div className={styles.tablecontainer}>
                      <table className={styles.table}>

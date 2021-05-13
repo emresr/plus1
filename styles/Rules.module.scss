@@ -2,19 +2,31 @@
    justify-content: center;
    width: 100%;
    display: flex;
-   margin-top: 32px;
+   margin-top: 10px;
+   font-size: 12px;
    @media (max-width: 768px) {
       display: block;
+      margin: 0px 15px 25px 15px;
    }
-
-   font-size: 12px;
 }
 
 .rules {
    width: 40%;
-   margin: 10px 10px 0px 10px;
+   margin: 20px 25px 0px 10px;
    @media (max-width: 768px) {
       width: 100%;
+      margin-bottom: 20px;
+   }
+   display: flex;
+   h2 {
+      font-size: 24px;
+   }
+   span {
+      font-weight: bold;
+   }
+   h1,
+   h2 {
+      font-weight: normal;
    }
 }
 
@@ -24,24 +36,32 @@
    text-align: center;
    @media (max-width: 768px) {
       width: 100%;
-      margin-top: 25px;
       border-top: solid 2px var(--color3);
    }
 }
+.random {
+   color: var(--color4);
+   font-weight: bold;
+   font-size: 25px;
+   letter-spacing: 0px;
+}
 .tablecontainer {
    display: flex;
-   margin: auto;
-   margin-top: 20px;
    justify-content: center;
 }
 .table {
-   margin: 1em;
    min-width: 300px;
-   font-size: large;
+   font-size: 24px;
 
    tr {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
+   }
+   tr:nth-child(even) {
+      background: var(--color2);
+   }
+   tr:nth-child(odd) {
+      background: var(--color3);
    }
 
    th,
@@ -57,9 +77,7 @@
 .trueplace {
    border-bottom: solid 2px rgb(0, 190, 0);
 }
-.trueplace1 {
-   border-bottom: none;
-}
+
 .wrongplace {
    border-bottom: solid 2px red;
 }

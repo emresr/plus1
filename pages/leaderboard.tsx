@@ -5,7 +5,6 @@ import styles from "../styles/Leaderboard.module.scss";
 import Head from "next/head";
 const Leaderboard = () => {
    const [ranking, loading] = useListVals(service.getFirst10());
-   console.log(ranking);
    const numbers: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
    interface Rank {

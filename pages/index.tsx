@@ -1,10 +1,8 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
-import React, { useState, useEffect, FC } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
+import styles from "../styles/Home.module.scss";
 import service from "../utils/service";
-import { useList, useListVals } from "react-firebase-hooks/database";
 
 export default function Home() {
    interface Inputs {
@@ -19,13 +17,8 @@ export default function Home() {
       minus: number;
    }
    const [points, setPoints] = useState<Array<Points>>([]);
-   /*    points.reverse(); */
    const [answers, setAnswers] = useState<Array<string>>([]);
-   /*    answers.reverse();
-    */ const [error, setError] = useState<string>(null);
-   /*       "No duplicate pls.Look rules 21.1"
-    */
-   const [errorAnimation, setErrorAnimation] = useState<boolean>(true);
+   const [error, setError] = useState<string>(null);
 
    useEffect(() => {
       setTimeout(() => {
@@ -197,28 +190,31 @@ export default function Home() {
    }, [score]);
 
    function getResult() {
-      if (!input || !input.one || !input.zero || !input.two) {
+      if (
+         !input ||
+         input.one == null ||
+         input.zero == null ||
+         input.two == null
+      ) {
          setError("Enter 3 digit number");
       } else {
-         console.clear();
          const pluspoint: number = Game(input.zero, input.one, input.two);
-         points.push({
+         points.unshift({
             plus: pluspoint,
             minus: Minus(input.zero, input.one, input.two),
          });
 
          const answer: string =
             input.zero.toString() + input.one.toString() + input.two.toString();
-         answers.push(answer);
+         answers.unshift(answer);
 
          setTryCount(tryCount + 1);
 
          if (pluspoint == 3) {
             setScore({
-               name: username ? username : "Enter your name...",
+               name: username !== "Enter your name..." ? username : "Anonymous",
                point: tryCount + 1,
             });
-            console.log(random);
             setModal({ name: username, try: tryCount + 1, number: random });
             jumpNext ? setNewGame() : setIsModalOpen(true);
             setLastScore(tryCount + 1);
@@ -247,31 +243,22 @@ export default function Home() {
       setPoints([]);
       setTryCount(0);
    }
-   console.log(jumpNext);
    return (
       <div>
          <Head>
-            <title>Plus+1</title>
+            <title>Plus1</title>
             <link rel="icon" href="/favicon.ico" />
          </Head>
          {isModalOpen && (
             <div>
                <div className={styles.modal}>
-                  <button
-                     className={styles.close_button}
-                     onClick={() => {
-                        setIsModalOpen(false);
-                     }}
-                  >
-                     x{" "}
-                  </button>
-                  <div>
+                  <div style={{ textAlign: "center" }}>
                      <h1>
                         You got it{" "}
-                        {modal.name !== "Enter your name..." && modal.name}{" "}
+                        {modal.name !== "Enter your name..." && modal.name} !
                      </h1>
                      <h1>Number was {modal.number}</h1>
-                     <h1>In {modal.try} try</h1>
+                     <h1>Your score: {modal.try} </h1>
                      <div className={styles.new_game_cont}>
                         <button
                            className={styles.new_game}
@@ -295,17 +282,7 @@ export default function Home() {
          )}
          <Layout>
             <div className={styles.container}>
-               <div
-                  className={styles.left}
-                  style={errorAnimation && { marginTop: "0px" }}
-               >
-                  {/*  <button
-                     onClick={() => {
-                        setIsModalOpen(!isModalOpen);
-                     }}
-                  >
-                     Modal
-                  </button> */}
+               <div className={styles.left}>
                   <div>
                      {" "}
                      <div className={styles.left_container}>
@@ -353,32 +330,35 @@ export default function Home() {
                               </button>
                            ))}
                         </div>
-                        <button
-                           className={styles.button}
-                           onClick={Delete}
-                           disabled={!input}
-                        >
-                           D
-                        </button>
-                        <button
-                           className={styles.button}
-                           onClick={getResult}
-                           /*  disabled={
-                           input ? false : input && input.two ? true : false
-                        } */
-                        >
-                           E
-                        </button>
+                        <div className={styles.game_buttons}>
+                           <button
+                              className={styles.button}
+                              onClick={Delete}
+                              disabled={!input}
+                           >
+                              ⌫
+                           </button>
+                           <button
+                              className={styles.button}
+                              onClick={getResult}
+                           >
+                              ↵
+                           </button>
+                        </div>
                      </div>
                      {tryCount !== 0 && (
                         <div className={styles.trycount}>
                            {" "}
-                           <h1>You tried {tryCount} times.</h1>
+                           <h1>
+                              You tried {tryCount}
+                              {x}
+                              times.
+                           </h1>
                         </div>
                      )}
                   </div>{" "}
                </div>
-               <div className={styles.history_title}>
+               <div className={styles.history_container}>
                   <input
                      className={styles.name_input}
                      value={username}
@@ -394,26 +374,17 @@ export default function Home() {
                         Jump to next game immediately
                      </h1>
                      <div className={styles.toggle_container}>
-                        <label className={styles.switch}>
+                        <label>
                            <input
                               type="checkbox"
                               onChange={() => {
                                  setJumpNext(!jumpNext);
                               }}
+                              className={styles.switch}
+                              id="switch"
                            />{" "}
-                           <div className={styles.toggle} />
                         </label>
                      </div>
-                     {/*      <button
-                        onClick={() => {
-                           setJumpNext(!jumpNext);
-                        }}
-                        className={styles.toggle}
-                     >
-                        <div
-                           className={`${styles.toggle_button}  ${styles.lmao}`}
-                        />
-                     </button> */}
                   </div>
                   {lastScore && (
                      <h1 className={styles.lastscore}>
@@ -425,7 +396,7 @@ export default function Home() {
                      <table className={styles.table} id="table">
                         {answers.length > 0 &&
                            answers.map((answer, index) => (
-                              <tr>
+                              <tr key={index}>
                                  <td>
                                     <h1>{answer}</h1>
                                  </td>

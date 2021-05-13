@@ -13,6 +13,9 @@
 }
 .header_title {
    margin: 0px;
+   @media (max-width: 768px) {
+      margin: 0px 15px 0px 15px;
+   }
 }
 .header_content {
    display: flex;
@@ -20,6 +23,9 @@
    margin: auto;
    margin-top: 20px;
    justify-content: center;
+   @media (max-width: 768px) {
+      display: block;
+   }
 }
 .header_button {
    background: transparent;
