@@ -223,7 +223,7 @@ export default function Home() {
          setInput(null);
       }
    }
-   const [lastScore, setLastScore] = useState<number>(1);
+   const [lastScore, setLastScore] = useState<number>(0);
    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
    interface Modal {
       name: string;
@@ -349,10 +349,7 @@ export default function Home() {
                      {tryCount !== 0 && (
                         <div className={styles.trycount}>
                            {" "}
-                           <h1>
-                              You tried {tryCount}
-                              times.
-                           </h1>
+                           <h1>You tried {tryCount} times.</h1>
                         </div>
                      )}
                   </div>{" "}
@@ -385,7 +382,7 @@ export default function Home() {
                         </label>
                      </div>
                   </div>
-                  {lastScore && (
+                  {lastScore !== 0 && (
                      <h1 className={styles.lastscore}>
                         Last Score : {lastScore}
                      </h1>
