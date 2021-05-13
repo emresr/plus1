@@ -351,7 +351,6 @@ export default function Home() {
                            {" "}
                            <h1>
                               You tried {tryCount}
-                              {x}
                               times.
                            </h1>
                         </div>
