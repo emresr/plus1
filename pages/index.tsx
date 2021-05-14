@@ -259,12 +259,11 @@ export default function Home() {
       setTryCount(0);
    }
 
-   useEffect(() => {
+   typeof window !== "undefined" &&
       document.addEventListener("keydown", logKey);
-   }, [x]);
 
    function logKey(e) {
-      typeof window !== "undefined" && console.clear();
+      console.clear();
 
       console.log(e);
       if (e.keyCode == 13) {
@@ -414,13 +413,6 @@ export default function Home() {
                      onFocus={() => {
                         username == "Enter your name..." && setUsername("");
                      }}
-                  />{" "}
-                  <input
-                     className={styles.name_input}
-                     onChange={(e) => {
-                        console.log(e);
-                     }}
-                     autoFocus
                   />{" "}
                   <div className={styles.next_game}>
                      <h1 className={styles.next_text}>
