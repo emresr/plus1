@@ -252,7 +252,13 @@ export default function Home() {
       setPoints([]);
       setTryCount(0);
    }
-   const [useNumpad, setUseNumpad] = useState<boolean>(false);
+   const [useNumpad, setUseNumpad] = useState<boolean>(
+      Cookies.get("usenumpad") == "true" ? true : false
+   );
+   useEffect(() => {
+      Cookies.set("usenumpad", `${useNumpad}`);
+   }, [useNumpad]);
+
    return (
       <div>
          <Head>
