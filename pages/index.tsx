@@ -7,8 +7,6 @@ import Cookies from "js-cookie";
 import Document from "next/document";
 
 export default function Home() {
-   //console.log(new Date().getTimezoneOffset());
-
    interface Inputs {
       zero: number;
       one: number;
@@ -51,104 +49,167 @@ export default function Home() {
    const x: string = random && random.toString();
 
    function Game(zero: number, one: number, two: number) {
-      const lmao: Array<string> = x.split("");
+      const checkArray: Array<string> = x.split("");
       if (
-         lmao[0] == zero.toString() &&
-         lmao[1] == one.toString() &&
-         lmao[2] == two.toString()
+         checkArray[0] == zero.toString() &&
+         checkArray[1] == one.toString() &&
+         checkArray[2] == two.toString()
       ) {
          return 3;
-      } else if (lmao[0] == zero.toString() && lmao[1] == one.toString()) {
+      } else if (
+         checkArray[0] == zero.toString() &&
+         checkArray[1] == one.toString()
+      ) {
          return 2;
-      } else if (lmao[0] == zero.toString() && lmao[2] == two.toString()) {
+      } else if (
+         checkArray[0] == zero.toString() &&
+         checkArray[2] == two.toString()
+      ) {
          return 2;
-      } else if (lmao[1] == one.toString() && lmao[2] == two.toString()) {
+      } else if (
+         checkArray[1] == one.toString() &&
+         checkArray[2] == two.toString()
+      ) {
          return 2;
-      } else if (lmao[0] == zero.toString()) {
+      } else if (checkArray[0] == zero.toString()) {
          return 1;
-      } else if (lmao[1] == one.toString()) {
+      } else if (checkArray[1] == one.toString()) {
          return 1;
-      } else if (lmao[2] == two.toString()) {
+      } else if (checkArray[2] == two.toString()) {
          return 1;
       } else {
          return 0;
       }
    }
    function Minus(zero: number, one: number, two: number) {
-      const lmao: Array<string> = x.split("");
+      const checkArray: Array<string> = x.split("");
 
       if (
-         (lmao[0] == one.toString() &&
-            lmao[1] == two.toString() &&
-            lmao[2] == zero.toString()) ||
-         (lmao[0] == two.toString() &&
-            lmao[1] == zero.toString() &&
-            lmao[2] == one.toString())
+         (checkArray[0] == one.toString() &&
+            checkArray[1] == two.toString() &&
+            checkArray[2] == zero.toString()) ||
+         (checkArray[0] == two.toString() &&
+            checkArray[1] == zero.toString() &&
+            checkArray[2] == one.toString())
       ) {
          return -3;
       }
       // 0 = one
-      else if (lmao[0] == one.toString() && lmao[1] == two.toString()) {
+      else if (
+         checkArray[0] == one.toString() &&
+         checkArray[1] == two.toString()
+      ) {
          return -2;
-      } else if (lmao[0] == one.toString() && lmao[1] == zero.toString()) {
+      } else if (
+         checkArray[0] == one.toString() &&
+         checkArray[1] == zero.toString()
+      ) {
          return -2;
-      } else if (lmao[0] == one.toString() && lmao[2] == zero.toString()) {
+      } else if (
+         checkArray[0] == one.toString() &&
+         checkArray[2] == zero.toString()
+      ) {
          return -2;
       }
       // 1 = two
-      else if (lmao[0] == two.toString() && lmao[1] == zero.toString()) {
+      else if (
+         checkArray[0] == two.toString() &&
+         checkArray[1] == zero.toString()
+      ) {
          return -2;
-      } else if (lmao[0] == two.toString() && lmao[1] == zero.toString()) {
+      } else if (
+         checkArray[0] == two.toString() &&
+         checkArray[1] == zero.toString()
+      ) {
          return -2;
-      } else if (lmao[0] == two.toString() && lmao[2] == zero.toString()) {
+      } else if (
+         checkArray[0] == two.toString() &&
+         checkArray[2] == zero.toString()
+      ) {
          return -2;
       }
 
       // 1 = zero
-      else if (lmao[1] == zero.toString() && lmao[0] == one.toString()) {
+      else if (
+         checkArray[1] == zero.toString() &&
+         checkArray[0] == one.toString()
+      ) {
          return -2;
-      } else if (lmao[1] == zero.toString() && lmao[0] == two.toString()) {
+      } else if (
+         checkArray[1] == zero.toString() &&
+         checkArray[0] == two.toString()
+      ) {
          return -2;
-      } else if (lmao[1] == zero.toString() && lmao[2] == one.toString()) {
+      } else if (
+         checkArray[1] == zero.toString() &&
+         checkArray[2] == one.toString()
+      ) {
          return -2;
       }
       // 1 = two
-      else if (lmao[1] == two.toString() && lmao[0] == one.toString()) {
+      else if (
+         checkArray[1] == two.toString() &&
+         checkArray[0] == one.toString()
+      ) {
          return -2;
-      } else if (lmao[1] == two.toString() && lmao[2] == zero.toString()) {
+      } else if (
+         checkArray[1] == two.toString() &&
+         checkArray[2] == zero.toString()
+      ) {
          return -2;
-      } else if (lmao[1] == two.toString() && lmao[2] == one.toString()) {
+      } else if (
+         checkArray[1] == two.toString() &&
+         checkArray[2] == one.toString()
+      ) {
          return -2;
       }
       // 2 = zero
-      else if (lmao[2] == zero.toString() && lmao[0] == one.toString()) {
+      else if (
+         checkArray[2] == zero.toString() &&
+         checkArray[0] == one.toString()
+      ) {
          return -2;
-      } else if (lmao[2] == zero.toString() && lmao[0] == two.toString()) {
+      } else if (
+         checkArray[2] == zero.toString() &&
+         checkArray[0] == two.toString()
+      ) {
          return -2;
-      } else if (lmao[2] == zero.toString() && lmao[1] == two.toString()) {
+      } else if (
+         checkArray[2] == zero.toString() &&
+         checkArray[1] == two.toString()
+      ) {
          return -2;
       }
       // 2 = one
-      else if (lmao[2] == one.toString() && lmao[0] == two.toString()) {
+      else if (
+         checkArray[2] == one.toString() &&
+         checkArray[0] == two.toString()
+      ) {
          return -2;
-      } else if (lmao[2] == one.toString() && lmao[1] == zero.toString()) {
+      } else if (
+         checkArray[2] == one.toString() &&
+         checkArray[1] == zero.toString()
+      ) {
          return -2;
-      } else if (lmao[2] == one.toString() && lmao[1] == two.toString()) {
+      } else if (
+         checkArray[2] == one.toString() &&
+         checkArray[1] == two.toString()
+      ) {
          return -2;
       }
 
       // -1
-      else if (lmao[0] == one.toString()) {
+      else if (checkArray[0] == one.toString()) {
          return -1;
-      } else if (lmao[0] == two.toString()) {
+      } else if (checkArray[0] == two.toString()) {
          return -1;
-      } else if (lmao[1] == zero.toString()) {
+      } else if (checkArray[1] == zero.toString()) {
          return -1;
-      } else if (lmao[1] == two.toString()) {
+      } else if (checkArray[1] == two.toString()) {
          return -1;
-      } else if (lmao[2] == zero.toString()) {
+      } else if (checkArray[2] == zero.toString()) {
          return -1;
-      } else if (lmao[2] == one.toString()) {
+      } else if (checkArray[2] == one.toString()) {
          return -1;
       } else {
          return 0;
@@ -259,24 +320,6 @@ export default function Home() {
       setTryCount(0);
    }
 
-   typeof window !== "undefined" &&
-      document.addEventListener("keydown", logKey);
-
-   function logKey(e) {
-      console.clear();
-
-      console.log(e);
-      if (e.keyCode == 13) {
-         console.log("enter");
-         getResult();
-      } else if (e.keyCode == 8) {
-         console.log("delete");
-         Delete();
-      } else if (e.keyCode >= 48 && e.keyCode <= 57) {
-         console.log(e.key);
-         someClick(parseInt(e.key));
-      }
-   }
    return (
       <div>
          <Head>
