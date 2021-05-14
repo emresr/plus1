@@ -21,8 +21,8 @@ const Rules = () => {
                         - Get <span>+1</span> for each right digit in its place.
                      </h2>
                      <h2>
-                        - Get <span>-1</span> for each right digit but in the
-                        wrong place.
+                        - Get <span>-1</span> for each right digit in the wrong
+                        place.
                      </h2>
                   </div>{" "}
                </div>

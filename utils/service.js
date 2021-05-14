@@ -11,4 +11,10 @@ const create = (data) => {
 const getFirst10 = () => {
    return db.orderByChild("point").limitToFirst(10);
 };
+const getWeekly = () => {
+   return db.orderByChild("point").limitToFirst(10);
+};
+const getAllTime = () => {
+   return db.orderByChild("point").limitToFirst(10);
+};
 export default { getAll, create, getFirst10 };

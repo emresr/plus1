@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import styles from "../styles/Home.module.scss";
 import service from "../utils/service";
+import Cookies from "js-cookie";
 
 export default function Home() {
    interface Inputs {
@@ -180,10 +181,12 @@ export default function Home() {
       name: string;
       point: number;
    }
-
+   // date etkle
    const [score, setScore] = useState<Score>();
 
-   const [username, setUsername] = useState<string>("Enter your name...");
+   const [username, setUsername] = useState<string>(
+      Cookies.get("username") ? Cookies.get("username") : "Enter your name..."
+   );
 
    useEffect(() => {
       service.create(score);
@@ -235,7 +238,13 @@ export default function Home() {
       isModalOpen == false && setNewGame();
    }, [isModalOpen]);
 
-   const [jumpNext, setJumpNext] = useState<boolean>(false);
+   const [jumpNext, setJumpNext] = useState<boolean>(
+      Cookies.get("jumpnext") == "true" ? true : false
+   );
+
+   useEffect(() => {
+      Cookies.set("jumpnext", `${jumpNext}`);
+   }, [jumpNext]);
 
    function setNewGame() {
       setRandom(Random());
@@ -243,6 +252,7 @@ export default function Home() {
       setPoints([]);
       setTryCount(0);
    }
+   const [useNumpad, setUseNumpad] = useState<boolean>(false);
    return (
       <div>
          <Head>
@@ -349,7 +359,11 @@ export default function Home() {
                      {tryCount !== 0 && (
                         <div className={styles.trycount}>
                            {" "}
-                           <h1>You tried {tryCount} times.</h1>
+                           {tryCount == 1 ? (
+                              <h1>You tried 1 time.</h1>
+                           ) : (
+                              <h1>You tried {tryCount} times.</h1>
+                           )}
                         </div>
                      )}
                   </div>{" "}
@@ -360,9 +374,10 @@ export default function Home() {
                      value={username}
                      onChange={(e) => {
                         setUsername(e.target.value);
+                        Cookies.set("username", e.target.value);
                      }}
                      onFocus={() => {
-                        setUsername("");
+                        username == "Enter your name..." && setUsername("");
                      }}
                   />{" "}
                   <div className={styles.next_game}>
@@ -373,6 +388,7 @@ export default function Home() {
                         <label>
                            <input
                               type="checkbox"
+                              checked={jumpNext}
                               onChange={() => {
                                  setJumpNext(!jumpNext);
                               }}
