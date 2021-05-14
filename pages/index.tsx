@@ -4,8 +4,11 @@ import Layout from "../components/layout";
 import styles from "../styles/Home.module.scss";
 import service from "../utils/service";
 import Cookies from "js-cookie";
+import Document from "next/document";
 
 export default function Home() {
+   //console.log(new Date().getTimezoneOffset());
+
    interface Inputs {
       zero: number;
       one: number;
@@ -153,6 +156,7 @@ export default function Home() {
    }
 
    function someClick(a: number) {
+      console.log(a);
       if (!input || input.zero == null) {
          setInput({ zero: a, one: null, two: null });
       } else if (input.one == null) {
@@ -180,6 +184,7 @@ export default function Home() {
    interface Score {
       name: string;
       point: number;
+      date: string;
    }
    // date etkle
    const [score, setScore] = useState<Score>();
@@ -217,6 +222,7 @@ export default function Home() {
             setScore({
                name: username !== "Enter your name..." ? username : "Anonymous",
                point: tryCount + 1,
+               date: new Date().toISOString(),
             });
             setModal({ name: username, try: tryCount + 1, number: random });
             jumpNext ? setNewGame() : setIsModalOpen(true);
@@ -252,13 +258,26 @@ export default function Home() {
       setPoints([]);
       setTryCount(0);
    }
-   const [useNumpad, setUseNumpad] = useState<boolean>(
-      Cookies.get("usenumpad") == "true" ? true : false
-   );
-   useEffect(() => {
-      Cookies.set("usenumpad", `${useNumpad}`);
-   }, [useNumpad]);
 
+   useEffect(() => {
+      document.addEventListener("keydown", logKey);
+   }, [x]);
+
+   function logKey(e) {
+      typeof window !== "undefined" && console.clear();
+
+      console.log(e);
+      if (e.keyCode == 13) {
+         console.log("enter");
+         getResult();
+      } else if (e.keyCode == 8) {
+         console.log("delete");
+         Delete();
+      } else if (e.keyCode >= 48 && e.keyCode <= 57) {
+         console.log(e.key);
+         someClick(parseInt(e.key));
+      }
+   }
    return (
       <div>
          <Head>
@@ -266,7 +285,11 @@ export default function Home() {
             <link rel="icon" href="/favicon.ico" />
          </Head>
          {isModalOpen && (
-            <div>
+            <div
+               onChange={(e) => {
+                  console.log(e);
+               }}
+            >
                <div className={styles.modal}>
                   <div style={{ textAlign: "center" }}>
                      <h1>
@@ -298,6 +321,12 @@ export default function Home() {
          )}
          <Layout>
             <div className={styles.container}>
+               {/*      <input
+                  className={styles.numpad}
+                  onChange={(e) => {
+                     console.log(e.target.value);
+                  }}
+               /> */}
                <div className={styles.left}>
                   <div>
                      {" "}
@@ -385,6 +414,13 @@ export default function Home() {
                      onFocus={() => {
                         username == "Enter your name..." && setUsername("");
                      }}
+                  />{" "}
+                  <input
+                     className={styles.name_input}
+                     onChange={(e) => {
+                        console.log(e);
+                     }}
+                     autoFocus
                   />{" "}
                   <div className={styles.next_game}>
                      <h1 className={styles.next_text}>

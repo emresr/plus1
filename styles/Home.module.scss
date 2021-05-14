@@ -123,7 +123,8 @@
 
 .tablecontainer {
    height: 250px;
-   overflow: scroll;
+   overflow: none;
+   overflow-y: none;
    scroll-behavior: smooth;
    margin-bottom: 10px;
 }
@@ -211,7 +212,11 @@
    left: 0;
    background: rgba(0, 0, 0, 0.6);
 }
-
+.numpad {
+   display: hidden;
+   width: 100%;
+   height: 100%;
+}
 /* Toggla */
 .toggle_container {
    margin-top: auto;

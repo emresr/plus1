@@ -2,9 +2,10 @@
    width: 50%;
    margin: 0 auto;
    text-align: center;
-   margin-top: 20px;
-   @media (max-width: 768px) {
+   margin-top: 0px;
+   @media (max-width: 1000px) {
       margin-bottom: 25px;
+      width: 100%;
    }
 }
 
@@ -12,13 +13,25 @@
 .rankcontainer {
    display: flex;
    margin: auto;
-   margin-top: 10px;
+   margin-top: 0px;
    justify-content: center;
+   @media (max-width: 1000px) {
+      width: 80%;
+      display: block;
+   }
+}
+.each_rank {
+   margin-right: 20px;
+   margin-left: 20px;
+   @media (max-width: 1000px) {
+      margin-right: auto;
+      margin-left: auto;
+   }
 }
 .rankings {
    margin: 0em;
    min-width: 300px;
-   font-size: large;
+   font-size: medium;
    tr {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
@@ -28,6 +41,11 @@
    }
    tr:nth-child(odd) {
       background: var(--color3);
+   }
+   tr:nth-child(2) {
+      font-weight: bold;
+      color: rgba(2, 109, 41, 0.9);
+      font-size: larger;
    }
    th,
    td {

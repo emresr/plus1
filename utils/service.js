@@ -8,13 +8,26 @@ const getAll = () => {
 const create = (data) => {
    return db.push(data);
 };
-const getFirst10 = () => {
-   return db.orderByChild("point").limitToFirst(10);
+
+const getToday = () => {
+   return db
+      .orderByChild("date")
+      .startAt(
+         new Date().toISOString().substr(0, 10)
+      ); /* .orderByChild("point"); */
 };
 const getWeekly = () => {
-   return db.orderByChild("point").limitToFirst(10);
+   const today = new Date();
+   let tomorrow = new Date();
+   tomorrow.setDate(today.getDate() + 1);
+   let lastWeek = new Date();
+   lastWeek.setDate(today.getDate() - 6);
+   return db
+      .orderByChild("date")
+      .startAt(lastWeek.toISOString().substr(0, 10))
+      .endAt(tomorrow.toISOString().substr(0, 10));
 };
 const getAllTime = () => {
    return db.orderByChild("point").limitToFirst(10);
 };
-export default { getAll, create, getFirst10 };
+export default { getAll, create, getToday, getWeekly, getAllTime };
